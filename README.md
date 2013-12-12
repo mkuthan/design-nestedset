@@ -12,42 +12,43 @@ Below you can find example JPA mapping using nested set implementation. Enjoy!
 
 	@Entity
 	public class Tree {
+
 		@OneToMany
-    	private Set<Node> nodes = new HashSet<>();
-    	
-    	public NestedSet<Node> asNestedSet() {
-        	return new NestedSet<Node>(nodes);
-    	}
-    	
-    	public Node getRootComponent() {
-        	return asNestedSet().getRoot();
-    	}
+		private Set<Node> nodes = new HashSet<>();
+
+		public NestedSet<Node> asNestedSet() {
+			return new NestedSet<Node>(nodes);
+		}
+
+		public Node getRootComponent() {
+			return asNestedSet().getRoot();
+		}
 	}
-	
+
 	@Entity
 	public class Node implements NestedSetElement {
 		@ManyToOne
-   		@JoinColumn
-   		private Tree tree;
-	
+		@JoinColumn
+		private Tree tree;
+
 		@Embedded
-   		private NestedSetBound bound = new NestedSetBound();
-   		
-   		@Override
-   		public NestedSetBound getBound() {
-       		return bound;
-   		}
+		private NestedSetBound bound = new NestedSetBound();
 
-   		@Override
-   		public void setBound(NestedSetBound bound) {
-       		this.bound = bound;
-   		}
-		
+		@Override
+		public NestedSetBound getBound() {
+			return bound;
+		}
+
+		@Override
+		public void setBound(NestedSetBound bound) {
+			this.bound = bound;
+		}
+
 		public MetadataComponent getParent() {
-        	return tree.asNestedSet().getParentOf(this);
-    	}
+			return tree.asNestedSet().getParentOf(this);
+		}
 
-    	public final List<MetadataComponent> getChildren() {
-        	return tree.asNestedSet().getChildrenOf(this);
-    	}
+		public final List<MetadataComponent> getChildren() {
+			return tree.asNestedSet().getChildrenOf(this);
+		}
 	}
