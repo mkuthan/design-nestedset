@@ -12,16 +12,17 @@ Below you can find example JPA mapping using nested set implementation. Enjoy!
 
 	@Entity
 	public class Tree {
+	
 		@OneToMany
-    	private Set<Node> nodes = new HashSet<>();
+    		private Set<Node> nodes = new HashSet<>();
     	
-    	public NestedSet<Node> asNestedSet() {
-        	return new NestedSet<Node>(nodes);
-    	}
+    		public NestedSet<Node> asNestedSet() {
+			return new NestedSet<Node>(nodes);
+    		}
     	
-    	public Node getRootComponent() {
-        	return asNestedSet().getRoot();
-    	}
+    		public Node getRootComponent() {
+			return asNestedSet().getRoot();
+    		}
 	}
 	
 	@Entity
@@ -35,19 +36,19 @@ Below you can find example JPA mapping using nested set implementation. Enjoy!
    		
    		@Override
    		public NestedSetBound getBound() {
-       		return bound;
+       			return bound;
    		}
 
    		@Override
    		public void setBound(NestedSetBound bound) {
-       		this.bound = bound;
+       			this.bound = bound;
    		}
 		
 		public MetadataComponent getParent() {
-        	return tree.asNestedSet().getParentOf(this);
-    	}
+        		return tree.asNestedSet().getParentOf(this);
+    		}
 
-    	public final List<MetadataComponent> getChildren() {
-        	return tree.asNestedSet().getChildrenOf(this);
-    	}
+    		public final List<MetadataComponent> getChildren() {
+        		return tree.asNestedSet().getChildrenOf(this);
+    		}
 	}
