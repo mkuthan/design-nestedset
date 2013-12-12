@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'org.testng:testng:6.8.7'   
+}
+
+test {
+    useTestNG {
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
