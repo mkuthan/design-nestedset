@@ -3,21 +3,40 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+apply plugin: 'jacoco'
+apply plugin: 'coveralls'
+
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.2.1'
+	}
+}
+
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+	testCompile 'org.assertj:assertj-core:1.5.0'
     testCompile 'org.testng:testng:6.8.7'   
 }
 
 test {
     useTestNG {
     }
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled = true
+	}
 }
 
 task wrapper(type: Wrapper) {

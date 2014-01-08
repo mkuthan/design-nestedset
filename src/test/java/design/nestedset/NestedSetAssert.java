@@ -1,10 +1,10 @@
 package design.nestedset;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.fest.assertions.api.AbstractAssert;
+import org.assertj.core.api.AbstractAssert;
 
 public class NestedSetAssert<T extends NestedSetElement> extends AbstractAssert<NestedSetAssert<T>, NestedSet<T>> {
 

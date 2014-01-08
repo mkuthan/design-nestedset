@@ -1,6 +1,6 @@
 # Nested Set Design Pattern
 
-[![Build Status](https://travis-ci.org/mkuthan/design-nestedset.png)](https://travis-ci.org/mkuthan/design-nestedset)
+[![Build Status](https://travis-ci.org/mkuthan/design-nestedset.png)](https://travis-ci.org/mkuthan/design-nestedset) [![Coverage Status](https://coveralls.io/repos/mkuthan/design-nestedset/badge.png)](https://coveralls.io/r/mkuthan/design-nestedset)
 
 [Nested Set](http://en.wikipedia.org/wiki/Nested_set_model) is a design pattern for representing hierarchies in relational databases. 
 
