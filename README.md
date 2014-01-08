@@ -44,11 +44,11 @@ Below you can find example JPA mapping using nested set implementation. Enjoy!
 			this.bound = bound;
 		}
 
-		public MetadataComponent getParent() {
+		public Node getParent() {
 			return tree.asNestedSet().getParentOf(this);
 		}
 
-		public final List<MetadataComponent> getChildren() {
+		public final List<Node> getChildren() {
 			return tree.asNestedSet().getChildrenOf(this);
 		}
 	}
